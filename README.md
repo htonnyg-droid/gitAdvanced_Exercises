@@ -1,4 +1,5 @@
 **Part 1: Refining Git History (10 Challenges)**
+**Note: If the codes seems ununderstandable check the last to see the reflog as it encompasses all that happened**
 
 1. **Missing File Fix:**
 
@@ -105,21 +106,21 @@
 
    ```
 
-4. **Keeping History Tidy - Squashing Commits:**
+3. **Keeping History Tidy - Squashing Commits:**
 
    - Squashing combines multiple commits into a single one. Let's merge "Create second file" into "Create initial file" for a cleaner history.
 
    **Challenge:** Use interactive rebasing with the `squash` command to achieve this. learn more about `squash`
 
-5. **Splitting a Commit:**
+4. **Splitting a Commit:**
 
-   - Imagine "Create third and fourth files" describes too much at once. Separate them for better tracking with two different commit messages: "Create Third File" and "Create fourth file".
+   - Imagine "Create third and fourth files" describes too much at once. Separate them for better tracking with two different commit messages: "Create Third File"       and "Create fourth file".
 
    **Challenge:** Leverage `git reset` to separate the files into individual commits with distinct messages. learn more about `splitting commits`
 
-6. **Advanced Squashing:**
+5. **Advanced Squashing:**
 
-   - Let's explore more complex squashing. Can you combine the last two commits ("Create third file" and "Create fourth file") into a single commit named "Create third and fourth files"?
+   - Let's explore more complex squashing. Can you combine the last two commits ("Create third file" and "Create fourth file") into a single commit named "Create       third and fourth files"?
 
    **Challenge:** Utilize interactive rebasing with the `squash` command to achieve this advanced squash. **Check step 4**
    ```
@@ -253,7 +254,7 @@
    ```
 
  
-8. **Dropping a Commit:**
+6. **Dropping a Commit:**
 
    - We all make mistakes. Imagine needing to completely remove an unwanted commit from your history.
 
@@ -261,7 +262,7 @@
 
    **Challenge:** Use `git rebase -i` to identify and remove the "Unwanted commit" commit, cleaning up your history. learn more about `dropping commits`
 
-9. **Reordering Commits:**
+7. **Reordering Commits:**
 
    - Delve deeper into `git rebase -i`. Can you rearrange commits within your history using this command? learn more about `ordering commits`
    ```
@@ -501,17 +502,84 @@
 
    ```
 
-10. **Cherry-Picking Commits:**
+8. **Cherry-Picking Commits:**
 
    - Create a branch, call it `ft/branch`, and add a new file named `test5.md` with some content. Commit these changes with a message like "Implemented test 5".
-   - Imagine you only desire a specific commit from `ft/branch`. Research and use `git cherry-pick` to selectively bring that commit into your current branch which is `main`.
+   - Imagine you only desire a specific commit from `ft/branch`. Research and use `git cherry-pick` to selectively bring that commit into your current branch          which is `main`.
    
    learn more about `cherry-pick`
 
-11. **Visualizing Commit History (Bonus):**
+9. **Visualizing Commit History (Bonus):**
 
-   - Tools like `git log --graph` or a graphical Git client can help visualize your commit history. Explore these tools for a clearer understanding of your workflow.
+   - Tools like `git log --graph` or a graphical Git client can help visualize your commit history. Explore these tools for a clearer understanding of your             workflow.
 
-11. **Understanding Reflogs (Bonus):**
+10. **Understanding Reflogs (Bonus):**
 
    - Reflogs track Git operation history. Research about `git reflog` to learn how you can navigate back to previous states in your repository if needed.
+```
+      PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+      $ git reflog
+      96fbb8b (HEAD -> main, origin/main, origin/HEAD) HEAD@{0}: pull origin main: Merge made by the 'ort' strategy.
+      152f196 HEAD@{1}: cherry-pick: Implemented test5.md
+      22d7028 HEAD@{2}: checkout: moving from ft/branch to main
+      27eec5a (origin/ft/branch, ft/branch) HEAD@{3}: commit: Implemented test5.md
+      22d7028 HEAD@{4}: checkout: moving from main to ft/branch
+      22d7028 HEAD@{5}: reset: moving to origin/main
+      45f18bc HEAD@{6}: rebase (finish): returning to refs/heads/main
+      45f18bc HEAD@{7}: rebase (pick): first commit with first and second challenge in part 1 of the git advanced exercises
+      43d1f9a HEAD@{8}: rebase: fast-forward
+      50105b5 HEAD@{9}: rebase: fast-forward
+      6ca623d HEAD@{10}: rebase (start): checkout 6ca623d3ccbf39e574c7de157ce6a159cb7dd6dc
+      22d7028 HEAD@{11}: rebase (abort): returning to refs/heads/main
+      50105b5 HEAD@{12}: rebase: fast-forward
+      0fe386e HEAD@{13}: rebase (start): checkout 0fe386eed7dfc9d28e286ceb106f8c140579380f
+      22d7028 HEAD@{14}: rebase (abort): returning to refs/heads/main
+      43d1f9a HEAD@{15}: rebase: fast-forward
+      50105b5 HEAD@{16}: rebase: fast-forward
+      5c9e3db HEAD@{17}: rebase (start): checkout 5c9e3dbe16f6ca10cac4cf81e6cf9f4a4682c55b
+      22d7028 HEAD@{18}: rebase (finish): returning to refs/heads/main
+      22d7028 HEAD@{19}: rebase (start): checkout HEAD~1
+      3667ba6 HEAD@{20}: rebase (abort): returning to refs/heads/main
+      43d1f9a HEAD@{21}: rebase (start): checkout HEAD~2
+      3667ba6 HEAD@{22}: commit: Unwanted Commit
+      22d7028 HEAD@{23}: pull origin main --allow-unrelated-histories: Merge made by the 'ort' strategy.
+      43d1f9a HEAD@{24}: rebase (finish): returning to refs/heads/main
+      43d1f9a HEAD@{25}: commit (amend): Create Third and Fourth File
+      4e43fc7 HEAD@{26}: rebase: fast-forward
+      50105b5 HEAD@{27}: rebase: fast-forward
+      dba4e85 HEAD@{28}: rebase (start): checkout dba4e85479b31ca08548d1c841d7d9ed4fc773dd
+      4e43fc7 HEAD@{29}: rebase (finish): returning to refs/heads/main
+      4e43fc7 HEAD@{30}: rebase: fast-forward
+      50105b5 HEAD@{31}: rebase: fast-forward
+      7dd4915 HEAD@{32}: rebase (start): checkout 7dd49150583b07aeb9f3296631cefe0fc0625246
+      4e43fc7 HEAD@{33}: rebase (finish): returning to refs/heads/main
+      4e43fc7 HEAD@{34}: rebase (pick): Create Fourth File
+      50105b5 HEAD@{35}: rebase (squash): chore: Create initial file
+      c2c2f8d HEAD@{36}: rebase: fast-forward
+      9a943c3 HEAD@{37}: rebase (start): checkout 9a943c39d781b4cb88af79438d21841c106efad5
+      5c8e06d HEAD@{38}: rebase (finish): returning to refs/heads/main
+      5c8e06d HEAD@{39}: commit (amend): Create Fourth File
+      03813bd HEAD@{40}: rebase: fast-forward
+      a60ad3f HEAD@{41}: rebase: fast-forward
+      c2c2f8d HEAD@{42}: rebase: fast-forward
+      5fa000c HEAD@{43}: rebase (start): checkout 5fa000ce5effcbf8eef9a107e0e2c170d06da2ad
+      03813bd HEAD@{44}: rebase (finish): returning to refs/heads/main
+      03813bd HEAD@{45}: rebase (pick): Added and commited test4.md
+      a60ad3f HEAD@{46}: commit: Created Third File
+      c2c2f8d HEAD@{47}: reset: moving to HEAD~1
+      5627c59 HEAD@{48}: rebase: fast-forward
+      c2c2f8d HEAD@{49}: rebase (start): checkout HEAD~2
+      3362ef9 HEAD@{50}: rebase (finish): returning to refs/heads/main
+      3362ef9 HEAD@{51}: rebase (pick): Added and commited test4.md
+      5627c59 HEAD@{52}: rebase (pick): chore: Create third and fourth files
+      c2c2f8d HEAD@{53}: rebase (squash): chore: Create initial file
+      1efdf55 HEAD@{54}: rebase: fast-forward
+      60f593d HEAD@{55}: rebase (start): checkout 60f593ddbd3f2a0e43eb0cbddadf1751a9ba1936
+      d907c8b HEAD@{56}: rebase (finish): returning to refs/heads/main
+      d907c8b HEAD@{57}: rebase (start): checkout d7316e1
+      d907c8b HEAD@{58}: reset: moving to HEAD
+      d907c8b HEAD@{59}: rebase (finish): returning to refs/heads/main
+      
+      PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+
+```
