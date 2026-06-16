@@ -583,3 +583,102 @@
       PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
 
 ```
+**Part 2: Branching Basics (10 Challenges)**
+
+1. **Feature Branch Creation:**
+
+   - Imagine working on a new feature named `ft/new-feature`. Let's establish a dedicated branch for it.
+
+   **Challenge:** Create a new branch named `ft/new-feature` and switch to that branch.
+
+2. **Working on the Feature Branch:**
+
+   - Create a new file named `feature.txt` in this branch and add some content to it.
+   - Commit these changes with a descriptive message like "Implemented core functionality for new feature".
+
+3. **Switching Back and Making More Changes:**
+
+   - It's common to switch between branches during development.
+
+   **Challenge:** Switch back to the `main` branch (previously master) and create a new file named `readme.txt` with some introductory content. Commit these changes with a message like "Updated project readme".
+
+
+4. **Local vs. Remote Branches:**
+
+   - So far, we've been working with local branches that exist on your machine. Research the concept of remote branches, which are copies of your local branches stored on a Git hosting platform like GitHub.
+   
+5. **Branch Deletion:**
+
+   - After merging or completing work on a feature branch, it's good practice to remove it.
+
+   **Challenge:** Delete the `ft/new-feature` branch once you're confident the changes are integrated into `main`.
+   
+   # Here's the code and graph from 1-5
+   ```
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-feature)
+   $ touch feature.txt
+
+   Merge made by the 'ort' strategy.
+    exercise_one/feature.txt | 0
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 exercise_one/feature.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git branch -d ft/new-feature
+   Deleted branch ft/new-feature (was f305db4).
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git push origin --delete ft/new-feature
+   To https://github.com/htonnyg-droid/gitAdvanced_Exercises.git
+    - [deleted]         ft/new-feature
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git log --oneline
+   6e09cb1 (HEAD -> main) Merging branch 'ft/new-feature' to 'main'
+   6a5ea7e Updated project readme
+   f305db4 Implemented core functionality for new feature
+   7b81774 (origin/main, origin/HEAD) Final update to part 1
+   95117e2 Update README.md
+   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   152f196 Implemented test5.md
+   89d552f Update README.md by adding codes for 3, 4 and 5
+   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   43d1f9a Create Third and Fourth File
+   50105b5 chore: Create initial file
+   f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   d6e6ab9 Added and commited test4.md
+   a5d6718 chore: Create second file
+   1efdf55 chore: Create initial file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git graph --oneline
+   git: 'graph' is not a git command. See 'git --help'.
+   
+   The most similar commands are
+           branch
+           grep
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git log --graph --oneline
+   *   6e09cb1 (HEAD -> main) Merging branch 'ft/new-feature' to 'main'
+   |\
+   | * f305db4 Implemented core functionality for new feature
+   * | 6a5ea7e Updated project readme
+   |/
+   * 7b81774 (origin/main, origin/HEAD) Final update to part 1
+   * 95117e2 Update README.md
+   *   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   |\
+   | * 89d552f Update README.md by adding codes for 3, 4 and 5
+   * | 152f196 Implemented test5.md
+   |/
+   *   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   |\
+   | * f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   | * d6e6ab9 Added and commited test4.md
+   | * a5d6718 chore: Create second file
+   | * 1efdf55 chore: Create initial file
+   * 43d1f9a Create Third and Fourth File
+   * 50105b5 chore: Create initial file
+
+   ```
