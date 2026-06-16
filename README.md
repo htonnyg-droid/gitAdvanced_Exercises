@@ -682,3 +682,191 @@
    * 50105b5 chore: Create initial file
 
    ```
+   6. **Creating a Branch from a Commit:**
+
+   - You can also create a branch from a specific commit in your history.
+
+   **Challenge:** Use `git checkout -b ft/new-branch-from-commit commit-hash` (adjust the commit hash as needed) to create a new branch named `ft/new-branch-from-commit` starting from the commit two positions back in your history. 
+
+7. **Branch Merging:**
+
+   - Now that you've completed work on your feature branch, it's time to integrate it into `main`.
+
+   **Challenge:** Merge the `ft/new-branch-from-commit` branch into the `main` branch. Address any merge conflicts that might arise.
+
+8. **Branch Rebasing:**
+
+   - Rebasing is another method to integrate changes from a feature branch. It rewrites your branch history by incorporating its commits on top of the latest commit in the target branch (`main` in our case).
+
+   **Challenge:** Try rebasing the `ft/new-branch-from-commit` branch onto the `main` branch. Remember, rebasing rewrites history, so use it with caution, especially in shared repositories.
+
+9. **Renaming Branches:**
+
+   - Branch names can sometimes evolve. Let's rename `ft/new-branch-from-commit` to a more descriptive name.
+
+   **Challenge:** Use `git branch -m ft/new-branch-from-commit ft/improved-branch-name` to rename your branch.
+
+10. **Checking Out Detached HEAD:**
+
+   - In specific situations, you might need to detach HEAD from your current branch. Research `git checkout <commit-hash>` (replace with the desired commit hash) to understand this concept.
+
+   # Answers(part 2: (6-10)
+   ```
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git checkout -b ft/new-branch-from-commit 6e09cb1
+   Switched to a new branch 'ft/new-branch-from-commit'
+
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git log --oneline
+   6e09cb1 (HEAD -> ft/new-branch-from-commit) Merging branch 'ft/new-feature' to 'main'
+   6a5ea7e Updated project readme
+   f305db4 Implemented core functionality for new feature
+   7b81774 Final update to part 1
+   95117e2 Update README.md
+   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   152f196 Implemented test5.md
+   89d552f Update README.md by adding codes for 3, 4 and 5
+   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   43d1f9a Create Third and Fourth File
+   50105b5 chore: Create initial file
+   f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   d6e6ab9 Added and commited test4.md
+   a5d6718 chore: Create second file
+   1efdf55 chore: Create initial file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git checkout main
+   Switched to branch 'main'
+   Your branch is ahead of 'origin/main' by 4 commits.
+     (use "git push" to publish your local commits)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git merge ft/new-branch-from-commit
+   Already up to date.
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git checkout ft/new-branch-from-commit
+   Switched to branch 'ft/new-branch-from-commit'
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git rebase main
+   Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git log --oneline
+   c7eddd4 (HEAD -> ft/new-branch-from-commit, main) Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   41167fe (origin/main, origin/HEAD) Update README.md
+   6e09cb1 Merging branch 'ft/new-feature' to 'main'
+   6a5ea7e Updated project readme
+   f305db4 Implemented core functionality for new feature
+   7b81774 Final update to part 1
+   95117e2 Update README.md
+   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   152f196 Implemented test5.md
+   89d552f Update README.md by adding codes for 3, 4 and 5
+   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   43d1f9a Create Third and Fourth File
+   50105b5 chore: Create initial file
+   f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   d6e6ab9 Added and commited test4.md
+   a5d6718 chore: Create second file
+   1efdf55 chore: Create initial file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git branch -m ft/new-branch-from-commit ft/improved-branch-name
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/improved-branch-name)
+   $ git checkout -b ft/new-branch-from-commit 6a5ea7e
+   Switched to a new branch 'ft/new-branch-from-commit'
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git rebase main
+   Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git log --oneline
+   c7eddd4 (HEAD -> ft/new-branch-from-commit, main, ft/improved-branch-name) Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   41167fe (origin/main, origin/HEAD) Update README.md
+   6e09cb1 Merging branch 'ft/new-feature' to 'main'
+   6a5ea7e Updated project readme
+   f305db4 Implemented core functionality for new feature
+   7b81774 Final update to part 1
+   95117e2 Update README.md
+   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   152f196 Implemented test5.md
+   89d552f Update README.md by adding codes for 3, 4 and 5
+   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   43d1f9a Create Third and Fourth File
+   50105b5 chore: Create initial file
+   f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   d6e6ab9 Added and commited test4.md
+   a5d6718 chore: Create second file
+   1efdf55 chore: Create initial file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/new-branch-from-commit)
+   $ git checkout main
+   Switched to branch 'main'
+   Your branch is ahead of 'origin/main' by 4 commits.
+     (use "git push" to publish your local commits)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git branch -d ft/new-branch-from-commit
+   Deleted branch ft/new-branch-from-commit (was c7eddd4).
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git log --oneline
+   c7eddd4 (HEAD -> main, ft/improved-branch-name) Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   41167fe (origin/main, origin/HEAD) Update README.md
+   6e09cb1 Merging branch 'ft/new-feature' to 'main'
+   6a5ea7e Updated project readme
+   f305db4 Implemented core functionality for new feature
+   7b81774 Final update to part 1
+   95117e2 Update README.md
+   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   152f196 Implemented test5.md
+   89d552f Update README.md by adding codes for 3, 4 and 5
+   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   43d1f9a Create Third and Fourth File
+   50105b5 chore: Create initial file
+   f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   d6e6ab9 Added and commited test4.md
+   a5d6718 chore: Create second file
+   1efdf55 chore: Create initial file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git branch
+     ft/branch
+     ft/improved-branch-name
+   * main
+
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git checkout f305db4
+   Note: switching to 'f305db4'.
+   
+   You are in 'detached HEAD' state. You can look around, make experimental
+   changes and commit them, and you can discard any commits you make in this
+   state without impacting any branches by switching back to a branch.
+   
+   If you want to create a new branch to retain commits you create, you may
+   do so (now or later) by using -c with the switch command. Example:
+   
+     git switch -c <new-branch-name>
+   
+   Or undo this operation with:
+   
+     git switch -
+   
+   Turn off this advice by setting config variable advice.detachedHead to false
+   
+   HEAD is now at f305db4 Implemented core functionality for new feature
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one ((f305db4...))
+   $ git checkout main
+   Previous HEAD position was f305db4 Implemented core functionality for new feature
+   Switched to branch 'main'
+   Your branch is ahead of 'origin/main' by 4 commits.
+     (use "git push" to publish your local commits)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+
+   ```
