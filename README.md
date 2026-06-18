@@ -870,3 +870,173 @@
    PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
 
    ```
+ # Part 3
+   **Part 3: Advanced Workflows (10+ Challenges)**
+
+1. **Stashing Changes:**
+
+   - Imagine you're working on some changes in the `main` branch but need to attend to something urgent. You don't want to lose your uncommitted work.
+
+   **Challenge:** Stash your current changes in the `main` branch using `git stash`.
+
+2. **Retrieving Stashed Changes:**
+
+   - Later, when you're ready to resume working on those stashed changes, you can retrieve them.
+
+   **Challenge:** Apply the most recent stash back onto the `main` branch using `git stash pop`.
+
+3. **Branch Merging Conflicts (Continued):**
+
+   - Merge conflicts can arise when the same lines of code are modified in both branches being merged.
+
+   **Challenge:** Simulate a merge conflict scenario (you can create conflicting changes in a file on both `main` and a new feature branch). Then, try merging again and resolve the conflicts manually using your text editor.
+
+4. **Resolving Merge Conflicts with a Merge Tool:**
+
+   - Explore using a merge tool like `git mergetool` to help you visualize and resolve merge conflicts more efficiently.
+# Answers for 1-4
+
+
+   ```
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ echo "Work in progress" >> feature.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git stash
+   warning: in the working copy of 'exercise_one/feature.txt', LF will be replaced by CRLF the next time Git touches it
+   Saved working directory and index state WIP on main: f65a02f Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git status
+   On branch main
+   Your branch is up to date with 'origin/main'.
+   
+   nothing to commit, working tree clean
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git stash pop
+   On branch main
+   Your branch is up to date with 'origin/main'.
+   
+   Changes not staged for commit:
+     (use "git add <file>..." to update what will be committed)
+     (use "git restore <file>..." to discard changes in working directory)
+           modified:   feature.txt
+   
+   no changes added to commit (use "git add" and/or "git commit -a")
+   Dropped refs/stash@{0} (9d707dec7d5affb45ec458ab129e12c748dd0fbb)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ echo "Hello from here from main" > file.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git add file.txt
+   warning: in the working copy of 'exercise_one/file.txt', LF will be replaced by CRLF the next time Git touches it
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git commit -m 'modified file.txt in main'
+   [main fe333aa] modified file.txt in main
+    1 file changed, 1 insertion(+), 1 deletion(-)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git checkout -b ft/conflict-branch2 HEAD~1
+   Switched to a new branch 'ft/conflict-branch2'
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch2)
+   $ echo "hello again from conflict" > file.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch2)
+   $ git add file.txt
+   warning: in the working copy of 'exercise_one/file.txt', LF will be replaced by CRLF the next time Git touches it
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch2)
+   $ git commit -m "modified file.txt in conflict2"
+   [ft/conflict-branch2 cdad0c5] modified file.txt in conflict2
+    1 file changed, 1 insertion(+), 1 deletion(-)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch2)
+   $ git checkout main
+   Switched to branch 'main'
+   Your branch is ahead of 'origin/main' by 4 commits.
+     (use "git push" to publish your local commits)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git merge ft/conflict-branch2
+   Auto-merging exercise_one/file.txt
+   CONFLICT (content): Merge conflict in exercise_one/file.txt
+   Automatic merge failed; fix conflicts and then commit the result.
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ cat file.txt
+   <<<<<<< HEAD
+   Hello from here from main
+   =======
+   hello again from conflict
+   >>>>>>> ft/conflict-branch2
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ echo "Hellooooooo" > file.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ git add file.txt
+   warning: in the working copy of 'exercise_one/file.txt', LF will be replaced by CRLF the next time Git touches it
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ git commit -m 'Resolved conflict'
+   [main b4ca07f] Resolved conflict
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ echo "Hello again" > file.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git add file.txt
+   warning: in the working copy of 'exercise_one/file.txt', LF will be replaced by CRLF the next time Git touches it
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git commit -m "Changed file.txt again"
+   [main 7e1e2b5] Changed file.txt again
+    1 file changed, 1 insertion(+), 1 deletion(-)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git checkout -b ft/conflict-branch3 HEAD~1
+   Switched to a new branch 'ft/conflict-branch3'
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch3)
+   $ echo "Again hello" > file.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch3)
+   $ git add file.txt && git commit -m "Changed file.txt in conflict3"
+   warning: in the working copy of 'exercise_one/file.txt', LF will be replaced by CRLF the next time Git touches it
+   [ft/conflict-branch3 476a21f] Changed file.txt in conflict3
+    1 file changed, 1 insertion(+), 1 deletion(-)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (ft/conflict-branch3)
+   $ git checkout main
+   Switched to branch 'main'
+   Your branch is ahead of 'origin/main' by 7 commits.
+     (use "git push" to publish your local commits)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git merge ft/conflict-branch3
+   Auto-merging exercise_one/file.txt
+   CONFLICT (content): Merge conflict in exercise_one/file.txt
+   Automatic merge failed; fix conflicts and then commit the result.
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ git mergetool --tool=vscode
+   Merging:
+   exercise_one/file.txt
+   
+   Normal merge conflict for 'exercise_one/file.txt':
+     {local}: modified file
+     {remote}: modified file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ git mergetool --tool=vscode
+   No files need merging
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main|MERGING)
+   $ git commit -m "Resolved conflict with merged tool"
+   [main 52d2f2d] Resolved conflict with merged tool
+
+   ```
