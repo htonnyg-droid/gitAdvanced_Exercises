@@ -1048,13 +1048,13 @@
 
    - You might have files or directories you don't want to track in Git. Create a `.gitignore` file to specify these exclusions.
 
-   **Challenge:** Add a pattern like `/tmp` to your `.gitignore` file to exclude all temporary files and directories from version control. more about `ignoring files` [here](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files)
+   **Challenge:** Add a pattern like `/tmp` to your `.gitignore` file to exclude all temporary files and directories from version control. more about `ignoring files`
 
 7. **Working with Tags:**
 
    - Tags act like bookmarks in your Git history. Create a tag to mark a specific point in your development.
 
-   **Challenge:** Use `git tag v1.0` to create a tag named `v1.0` on the current commit in your `main` branch.  [git tags](https://www.javatpoint.com/git-tags)
+   **Challenge:** Use `git tag v1.0` to create a tag named `v1.0` on the current commit in your `main` branch. 
 
 
 8. **Listing and Deleting Tags:**
@@ -1072,3 +1072,224 @@
    - Collaboration often involves pulling changes from the remote repository made by others.
 
    **Challenge:** Navigate to Github and make some changes inside your `README` file that you created on your `main` branch and in your local environment use `git pull origin <branch-name>` (replace `<branch-name>` with the actual branch you want to pull) to fetch changes from the remote repository's `main` branch and merge them into your local `main` branch. Address any merge conflicts that might arise.
+
+# Answers for 5-10
+
+```
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git log --oneline
+   422eabd (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   c20f521 Update README.md
+   52d2f2d Resolved conflict with merged tool
+   476a21f Changed file.txt in conflict3
+   7e1e2b5 Changed file.txt again
+   b4ca07f Resolved conflict
+   cdad0c5 modified file.txt in conflict2
+   fe333aa modified file.txt in main
+   0e965c9 Added file.txt to conflict-branch
+   8eafbb3 Removed feature.txt
+   be2a66b learning about conflicts with this file
+   f65a02f Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   debcca7 Update README.md
+   c7eddd4 (origin/ft/improved-branch-name, ft/improved-branch-name) Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   41167fe Update README.md
+   6e09cb1 Merging branch 'ft/new-feature' to 'main'
+   6a5ea7e Updated project readme
+   f305db4 Implemented core functionality for new feature
+   7b81774 Final update to part 1
+   95117e2 Update README.md
+   96fbb8b Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises
+   152f196 Implemented test5.md
+   89d552f Update README.md by adding codes for 3, 4 and 5
+   22d7028 Merge branch 'main' of https://github.com/htonnyg-droid/gitAdvanced_Exercises pulling previous changes
+   43d1f9a Create Third and Fourth File
+   50105b5 chore: Create initial file
+   f94fdaa first commit with first and second challenge in part 1 of the git advanced exercises
+   d6e6ab9 Added and commited test4.md
+   a5d6718 chore: Create second file
+   1efdf55 chore: Create initial file
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git checkout cdad0c5
+   Note: switching to 'cdad0c5'.
+   
+   You are in 'detached HEAD' state. You can look around, make experimental
+   changes and commit them, and you can discard any commits you make in this
+   state without impacting any branches by switching back to a branch.
+   
+   If you want to create a new branch to retain commits you create, you may
+   do so (now or later) by using -c with the switch command. Example:
+   
+     git switch -c <new-branch-name>
+   
+   Or undo this operation with:
+   
+     git switch -
+   
+   Turn off this advice by setting config variable advice.detachedHead to false
+   
+   HEAD is now at cdad0c5 modified file.txt in conflict2
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one ((cdad0c5...))
+   $ git switch -
+   Previous HEAD position was cdad0c5 modified file.txt in conflict2
+   Switched to branch 'main'
+   Your branch is up to date with 'origin/main'.
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ touch .gitignore
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ echo "*.txt" >> .gitignore
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git status
+   On branch main
+   Your branch is up to date with 'origin/main'.
+   
+   Untracked files:
+     (use "git add <file>..." to include in what will be committed)
+           .gitignore
+           file.txt.orig
+   
+   nothing added to commit but untracked files present (use "git add" to track)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git add .gitignore
+   warning: in the working copy of 'exercise_one/.gitignore', LF will be replaced by CRLF the next time Git touches it
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git commit -m 'Added a gitignore folder'
+   [main fec4449] Added a gitignore folder
+    1 file changed, 1 insertion(+)
+    create mode 100644 exercise_one/.gitignore
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git rm --cached *.txt
+   rm 'exercise_one/file.txt'
+   rm 'exercise_one/readme.txt'
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git commit -m 'Stoped tracking all txt files'
+   [main 33d6b3b] Stoped tracking all txt files
+    2 files changed, 2 deletions(-)
+    delete mode 100644 exercise_one/file.txt
+    delete mode 100644 exercise_one/readme.txt
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag v1.0
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag
+   v1.0
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git show v1.0
+   commit 33d6b3b25cf97d327374d9d3f0770ff92d3aae64 (HEAD -> main, tag: v1.0, origin/main, origin/HEAD)
+   Author: htonnyg@gmail.com <htonnyg@gmail.com>
+   Date:   Mon Jun 22 10:13:08 2026 +0200
+   
+       Stoped tracking all txt files
+   
+   diff --git a/exercise_one/file.txt b/exercise_one/file.txt
+   deleted file mode 100644
+   index 4b211f6..0000000
+   --- a/exercise_one/file.txt
+   +++ /dev/null
+   @@ -1,2 +0,0 @@
+   -Hellooooooo
+   -
+   diff --git a/exercise_one/readme.txt b/exercise_one/readme.txt
+   deleted file mode 100644
+   index e69de29..0000000
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag v1.1
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag v1.2
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag
+   v1.0
+   v1.1
+   v1.2
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git show v1.2
+   commit 33d6b3b25cf97d327374d9d3f0770ff92d3aae64 (HEAD -> main, tag: v1.2, tag: v1.1, tag: v1.0, origin/main, origin/HEAD)
+   Author: htonnyg@gmail.com <htonnyg@gmail.com>
+   Date:   Mon Jun 22 10:13:08 2026 +0200
+   
+       Stoped tracking all txt files
+   
+   diff --git a/exercise_one/file.txt b/exercise_one/file.txt
+   deleted file mode 100644
+   index 4b211f6..0000000
+   --- a/exercise_one/file.txt
+   +++ /dev/null
+   @@ -1,2 +0,0 @@
+   -Hellooooooo
+   -
+   diff --git a/exercise_one/readme.txt b/exercise_one/readme.txt
+   deleted file mode 100644
+   index e69de29..0000000
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag -d v1.1
+   Deleted tag 'v1.1' (was 33d6b3b)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git tag
+   v1.0
+   v1.2
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git push origin main
+   Everything up-to-date
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git branch
+     ft/branch
+     ft/improved-branch-name
+   * main
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git push origin ft/branch
+   Everything up-to-date
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git push origin ft/improvede-branch-name
+   error: src refspec ft/improvede-branch-name does not match any
+   error: failed to push some refs to 'https://github.com/htonnyg-droid/gitAdvanced_Exercises.git'
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git push origin ft/improved-branch-name
+   Everything up-to-date
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ git pull origin main
+   remote: Enumerating objects: 5, done.
+   remote: Counting objects: 100% (5/5), done.
+   remote: Compressing objects: 100% (3/3), done.
+   remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+   Unpacking objects: 100% (3/3), 1.87 KiB | 174.00 KiB/s, done.
+   From https://github.com/htonnyg-droid/gitAdvanced_Exercises
+    * branch            main       -> FETCH_HEAD
+      33d6b3b..db4de11  main       -> origin/main
+   Updating 33d6b3b..db4de11
+   Fast-forward
+    README.md | 32 ++++++++++++++++++++++++++++++++
+    1 file changed, 32 insertions(+)
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ cat README.md
+   cat: README.md: No such file or directory
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub/exercise_one (main)
+   $ cd ..
+   
+   PC@Tonnys MINGW64 ~/Desktop/web_design/Git&GitHub (main)
+   $ cat README.md
+
+```
